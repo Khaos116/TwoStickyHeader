@@ -38,6 +38,10 @@ class DoubleStickyHeaderDecoration<T : Any, U : Any>(
     var mNextClass: U? = null //顶部的第一个班级的下一个班级
     var mNextSchoolView: View? = null //顶部的下一个学校View
     var mNextClassView: View? = null //顶部的下一个班级View
+    //学校的高度
+    var mSchoolHeight = mFloatSchoolHeader?.height ?: 0
+    //班级的高度
+    var mClassHeight = mFloatClassHeader?.height ?: 0
     //找到当前第一个显示的数据
     val firstData = mMultiTypeAdapter.items[topPosition]
     if (mClassT.isInstance(firstData)) { //第一个就是学校
@@ -48,9 +52,10 @@ class DoubleStickyHeaderDecoration<T : Any, U : Any>(
     }
     mCurrentSchool?.let { b ->
       val v = fixLayoutSize(parent, mFloatView1) //找到学校，创建学校悬浮UI
+      mSchoolHeight = v.height
       mFloatSchoolHeader = v
       //存在学校的才查找班级
-      val belowIndex = findFirstItemBelowSchoolHeader(parent, v.height)
+      val belowIndex = findFirstItemBelowHeightIndex(parent, v.height)
       if (belowIndex > 0 && belowIndex < mMultiTypeAdapter.items.size) { //存在数据
         val belowData = mMultiTypeAdapter.items[belowIndex]
         if (mClassU.isInstance(belowData)) { //下一个数据是班级
@@ -61,29 +66,27 @@ class DoubleStickyHeaderDecoration<T : Any, U : Any>(
         }
       }
       //找到下个学校
-      val nextSchoolIndex = findNextSchoolPosition(mMultiTypeAdapter.items.indexOf(b))
+      val nextSchoolIndex = findNextSchoolPosition(findFirstItemBelowHeightIndex(parent, 0))
       if (nextSchoolIndex != -1) {
         mNextSchoolView = layoutManager.findViewByPosition(nextSchoolIndex)
       }
     }
-    mCurrentClass?.let { b ->
+    mCurrentClass?.let {
       mFloatClassHeader = fixLayoutSize(parent, mFloatView2) //找到班级，创建班级悬浮UI
+      mClassHeight = mFloatClassHeader?.height ?: 0
       //找到下个班级
-      val nextClassIndex = findNextClassPosition(mMultiTypeAdapter.items.indexOf(b))
+      val nextClassIndex = findNextClassPosition(findFirstItemBelowHeightIndex(parent, mSchoolHeight))
       if (nextClassIndex != -1) {
         mNextClass = mMultiTypeAdapter.items[nextClassIndex] as? U
         mNextClassView = layoutManager.findViewByPosition(nextClassIndex)
       }
     }
-    //学校的高度
-    val mSchoolHeight = mFloatSchoolHeader?.height ?: 0
-    //班级的高度
-    val mClassHeight = mFloatClassHeader?.height ?: 0
     // 班级头被下一个班级顶出时
     mNextClassView?.let { v ->
       if (v.top <= mSchoolHeight) { //当下一个班级已经和悬浮的学校挨着时，更新班级悬浮为下一个班级
         mCurrentClass = mNextClass
         mFloatClassHeader = fixLayoutSize(parent, mFloatView2) //找到班级，创建班级悬浮UI
+        mClassHeight = mFloatClassHeader?.height ?: 0
         mNextClass = null
       }
     }
@@ -177,9 +180,9 @@ class DoubleStickyHeaderDecoration<T : Any, U : Any>(
     return -1
   }
 
-  /** 找到屏幕中位于学校Header底部下面的第一个可见Item对应位置 */
-  private fun findFirstItemBelowSchoolHeader(parent: RecyclerView, schoolHeight: Int): Int {
-    val child = parent.findChildViewUnder(parent.width / 2f, schoolHeight * 1f)
+  /** 找到屏幕中固定高度底部下面的第一个可见Item对应位置 */
+  private fun findFirstItemBelowHeightIndex(parent: RecyclerView, height: Int): Int {
+    val child = parent.findChildViewUnder(parent.width / 2f, height * 1f)
     if (child != null) {
       return parent.getChildAdapterPosition(child)
     }
