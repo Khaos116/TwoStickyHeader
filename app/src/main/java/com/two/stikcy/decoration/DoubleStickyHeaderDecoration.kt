@@ -25,13 +25,14 @@ class DoubleStickyHeaderDecoration<T : Any, U : Any>(
   private val mCallFillFloatFirst: (t: T?, show: Boolean, offset: Float) -> Unit, //回调数据和偏移量
   private val mCallFillFloatSecond: (u: U?, show: Boolean, offset: Float) -> Unit, //回调数据和偏移量
 ) : RecyclerView.ItemDecoration() {
-  private var mFloatSchoolHeader: View? = null
-  private var mFloatClassHeader: View? = null
+
   override fun onDrawOver(c: Canvas, parent: RecyclerView, state: RecyclerView.State) {
     val layoutManager = parent.layoutManager as? LinearLayoutManager ?: return
     val topChild = parent.getChildAt(0) ?: return
     val topPosition = parent.getChildAdapterPosition(topChild)
     if (topPosition == RecyclerView.NO_POSITION) return
+    var mFloatSchoolHeader: View? = null
+    var mFloatClassHeader: View? = null
     //需查找的数据
     var mCurrentSchool: T? = null //顶部的第一个学校
     var mCurrentClass: U? = null //顶部的第一个班级
@@ -39,9 +40,9 @@ class DoubleStickyHeaderDecoration<T : Any, U : Any>(
     var mNextSchoolView: View? = null //顶部的下一个学校View
     var mNextClassView: View? = null //顶部的下一个班级View
     //学校的高度
-    var mSchoolHeight = mFloatSchoolHeader?.height ?: 0
+    var mSchoolHeight = 0
     //班级的高度
-    var mClassHeight = mFloatClassHeader?.height ?: 0
+    var mClassHeight = 0
     //找到当前第一个显示的数据
     val firstData = mMultiTypeAdapter.items[topPosition]
     if (mClassT.isInstance(firstData)) { //第一个就是学校
@@ -50,27 +51,29 @@ class DoubleStickyHeaderDecoration<T : Any, U : Any>(
     if (mCurrentSchool == null) { //如果第一个不是学校，就往前，找到第一个数据对应的学校
       mCurrentSchool = findCurrentSchool(topPosition)
     }
-    mCurrentSchool?.let { b ->
+    mCurrentSchool?.let {
       val v = fixLayoutSize(parent, mFloatView1) //找到学校，创建学校悬浮UI
       mSchoolHeight = v.height
       mFloatSchoolHeader = v
-      //存在学校的才查找班级
-      val belowIndex = findFirstItemBelowHeightIndex(parent, v.height)
-      if (belowIndex > 0 && belowIndex < mMultiTypeAdapter.items.size) { //存在数据
-        val belowData = mMultiTypeAdapter.items[belowIndex]
-        if (mClassU.isInstance(belowData)) { //下一个数据是班级
-          mCurrentClass = belowData as U
-        }
-        if (mCurrentClass == null && !mClassT.isInstance(belowData)) { //如果是学校挨着学校就不找班级了，否则：下一个数据不是班级，就往前，找到第一个数据对应的班级
-          mCurrentClass = findCurrentClass(belowIndex)
-        }
-      }
       //找到下个学校
       val nextSchoolIndex = findNextSchoolPosition(findFirstItemBelowHeightIndex(parent, 0))
       if (nextSchoolIndex != -1) {
         mNextSchoolView = layoutManager.findViewByPosition(nextSchoolIndex)
       }
     }
+
+    //查找当前存在的班级
+    val belowIndex = findFirstItemBelowHeightIndex(parent, mSchoolHeight)
+    if (belowIndex >= 0 && belowIndex < mMultiTypeAdapter.items.size) { //存在数据
+      val belowData = mMultiTypeAdapter.items[belowIndex]
+      if (mClassU.isInstance(belowData)) { //下一个数据是班级
+        mCurrentClass = belowData as U
+      }
+      if (mCurrentClass == null && !mClassT.isInstance(belowData)) { //如果是学校挨着学校就不找班级了，否则：下一个数据不是班级，就往前，找到第一个数据对应的班级
+        mCurrentClass = findCurrentClass(belowIndex)
+      }
+    }
+
     mCurrentClass?.let {
       mFloatClassHeader = fixLayoutSize(parent, mFloatView2) //找到班级，创建班级悬浮UI
       mClassHeight = mFloatClassHeader?.height ?: 0
@@ -115,8 +118,8 @@ class DoubleStickyHeaderDecoration<T : Any, U : Any>(
         }
       }
     }
-    mCallFillFloatSecond.invoke(mCurrentClass, mCurrentClass != null && mFloatClassHeader != null, mOffSetClass.toFloat())
-    mCallFillFloatFirst.invoke(mCurrentSchool, mCurrentSchool != null && mFloatSchoolHeader != null, mOffSetSchool.toFloat())
+    mCallFillFloatSecond.invoke(mCurrentClass, mFloatClassHeader != null, mOffSetClass.toFloat())
+    mCallFillFloatFirst.invoke(mCurrentSchool, mFloatSchoolHeader != null, mOffSetSchool.toFloat())
   }
 
   /** 测量并布局 Header View，确保其宽高正确 */
