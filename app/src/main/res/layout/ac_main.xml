@@ -8,9 +8,11 @@
   <androidx.recyclerview.widget.RecyclerView
     android:id="@+id/recyclerView"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="0dp"
     android:overScrollMode="never"
     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+    app:layout_constraintBottom_toTopOf="@id/tvClickSpan"
+    app:layout_constraintTop_toTopOf="parent"
     tools:itemCount="20"
     tools:listitem="@layout/item_student" />
 
@@ -31,4 +33,15 @@
     android:visibility="gone"
     app:layout_constraintTop_toTopOf="parent"
     tools:visibility="visible" />
+
+  <com.two.stikcy.span.MyClickSpanTextView
+    android:id="@+id/tvClickSpan"
+    android:layout_width="match_parent"
+    android:layout_height="40dp"
+    android:background="#f5f5f5"
+    android:gravity="center"
+    android:textColor="@color/teal_700"
+    android:textSize="15sp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    tools:text="Span文字点击效果" />
 </androidx.constraintlayout.widget.ConstraintLayout>

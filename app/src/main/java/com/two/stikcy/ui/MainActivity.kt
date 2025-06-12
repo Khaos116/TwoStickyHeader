@@ -1,8 +1,12 @@
 package com.two.stikcy.ui
 
 import android.annotation.SuppressLint
+import android.graphics.Color
 import android.os.Bundle
+import android.text.*
+import android.view.Gravity
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.drakeet.multitype.MultiTypeAdapter
 import com.two.stikcy.R
@@ -10,6 +14,7 @@ import com.two.stikcy.bean.*
 import com.two.stikcy.databinding.AcMainBinding
 import com.two.stikcy.decoration.DoubleStickyHeaderDecoration
 import com.two.stikcy.item.*
+import com.two.stikcy.span.MyTouchLinkSpan
 import com.two.stikcy.utils.CollapseUtils
 
 class MainActivity : AppCompatActivity() {
@@ -18,6 +23,26 @@ class MainActivity : AppCompatActivity() {
     super.onCreate(savedInstanceState)
     val vb = AcMainBinding.inflate(layoutInflater)
     setContentView(vb.root)
+    val sb = SpannableStringBuilder()
+    sb.append("点我")
+      .append("点我")
+      .append("点我")
+      .append("点我")
+    val clickSpan = SpannableString("点我")
+    clickSpan.setSpan(object : MyTouchLinkSpan(
+      colorNormal = Color.BLUE,
+      colorPress = Color.RED,
+      showUnderline = true,
+    ) {
+      override fun onSpanClick(widget: View) {
+        Toast.makeText(this@MainActivity, "点击了", Toast.LENGTH_SHORT).also { it.setGravity(Gravity.CENTER, 0, 0) }.show()
+      }
+    }, 0, clickSpan.length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+    sb.append(clickSpan)
+    vb.tvClickSpan.text = sb
+    vb.tvClickSpan.setOnClickListener {
+      Toast.makeText(this@MainActivity, "点错了", Toast.LENGTH_SHORT).also { it.setGravity(Gravity.CENTER, 0, 0) }.show()
+    }
     val adapter = MultiTypeAdapter()
     adapter.register(SchoolDelegate { b ->
       if (b.isCollapse()) { //全部收起的情况
