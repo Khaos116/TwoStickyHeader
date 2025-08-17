@@ -1,5 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-  <style name="Theme.TwoStickyHeader" parent="Theme.AppCompat.Light.NoActionBar" />
+  <style name="Theme.TwoStickyHeader" parent="Theme.AppCompat.Light.NoActionBar">
+    <item name="android:fontFamily">@font/pingfang_sc_regular</item>
+  </style>
+
+  <declare-styleable name="CenteredTextView">
+    <attr name="drawableWidth" format="dimension" />
+    <attr name="drawableHeight" format="dimension" />
+  </declare-styleable>
+
+  <declare-styleable name="DashedLineView">
+    <attr name="lineColor" format="color" />
+    <attr name="lineWidth" format="dimension" />
+    <attr name="lineDashLength" format="dimension" />
+    <attr name="lineDashGap" format="dimension" />
+    <attr name="lineOrientation" format="enum">
+      <enum name="HORIZONTAL" value="0" />
+      <enum name="VERTICAL" value="1" />
+    </attr>
+  </declare-styleable>
 </resources>

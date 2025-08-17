@@ -6,16 +6,35 @@
   android:layout_height="45dp"
   android:background="#ebecf0">
 
-  <androidx.appcompat.widget.AppCompatTextView
+  <com.two.stikcy.widget.CenteredTextView
     android:id="@+id/tvStudentName"
-    android:layout_width="wrap_content"
-    android:layout_height="match_parent"
-    android:gravity="center"
-    android:includeFontPadding="true"
-    android:paddingHorizontal="10dp"
-    android:textColor="#000000"
+    android:layout_width="150dp"
+    android:layout_height="35dp"
+    android:layout_marginStart="10dp"
+    android:layout_marginBottom="2dp"
+    android:drawableEnd="@drawable/svg_picture"
+    android:drawablePadding="6dp"
+    android:paddingHorizontal="20dp"
+    android:textColor="#f0f0f0"
     android:textSize="16sp"
     android:textStyle="bold"
+    app:drawableHeight="22dp"
+    app:drawableWidth="22dp"
+    app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:shapeCornersRadius="5dp"
+    app:shapeGradientEndColor="#adf3fd"
+    app:shapeGradientStartColor="#2299bc"
     tools:text="学生名称" />
+
+  <com.two.stikcy.widget.DashedLineView
+    android:layout_width="match_parent"
+    android:layout_height="2dp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:lineColor="@color/purple_200"
+    app:lineDashGap="3dp"
+    app:lineDashLength="5dp"
+    app:lineOrientation="HORIZONTAL"
+    app:lineWidth="1dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
