@@ -110,4 +110,5 @@ dependencies {
   implementation(libs.base.constraintlayout)
   implementation(libs.base.recyclerview)
   implementation(libs.base.multitype)
+  implementation(libs.supertextview)
 }
