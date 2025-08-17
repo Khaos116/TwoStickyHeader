@@ -1,13 +1,14 @@
 package com.two.stikcy.item
 
 import android.content.Context
-import android.view.*
-import android.widget.Toast
+import android.view.LayoutInflater
+import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.drakeet.multitype.ItemViewDelegate
 import com.two.stikcy.bean.StudentBean
 import com.two.stikcy.databinding.ItemStudentBinding
 import com.two.stikcy.databinding.ItemStudentParentBinding
+import com.two.stikcy.utils.ToastUtils
 
 /**
  * Author:Khaos116
@@ -25,10 +26,10 @@ class StudentDelegate : ItemViewDelegate<StudentBean, StudentDelegate.ViewHolder
       val vb = ItemStudentBinding.inflate(LayoutInflater.from(holder.vb.root.context), holder.vb.root, true)
       vb.tvStudentName.text = item.name
       vb.tvStudentName.mDrawableClickListener = {
-        Toast.makeText(vb.root.context, "点到图标了", Toast.LENGTH_SHORT).also { it.setGravity(Gravity.CENTER, 0, 0) }.show()
+        ToastUtils.showCenterToast(vb.root.context, "点到图标了")
       }
       vb.tvStudentName.setOnClickListener {
-        Toast.makeText(vb.root.context, "点到名字了", Toast.LENGTH_SHORT).also { it.setGravity(Gravity.CENTER, 0, 0) }.show()
+        ToastUtils.showCenterToast(vb.root.context, "点到名字了")
       }
     }
   }

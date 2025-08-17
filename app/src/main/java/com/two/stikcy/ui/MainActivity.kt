@@ -4,9 +4,7 @@ import android.annotation.SuppressLint
 import android.graphics.Color
 import android.os.Bundle
 import android.text.*
-import android.view.Gravity
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.drakeet.multitype.MultiTypeAdapter
 import com.two.stikcy.R
@@ -16,6 +14,7 @@ import com.two.stikcy.decoration.DoubleStickyHeaderDecoration
 import com.two.stikcy.item.*
 import com.two.stikcy.span.MyTouchLinkSpan
 import com.two.stikcy.utils.CollapseUtils
+import com.two.stikcy.utils.ToastUtils
 
 class MainActivity : AppCompatActivity() {
   @SuppressLint("NotifyDataSetChanged")
@@ -35,13 +34,13 @@ class MainActivity : AppCompatActivity() {
       showUnderline = true,
     ) {
       override fun onSpanClick(widget: View) {
-        Toast.makeText(this@MainActivity, "点击了", Toast.LENGTH_SHORT).also { it.setGravity(Gravity.CENTER, 0, 0) }.show()
+        ToastUtils.showCenterToast(this@MainActivity, "点击了")
       }
     }, 0, clickSpan.length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
     sb.append(clickSpan)
     vb.tvClickSpan.text = sb
     vb.tvClickSpan.setOnClickListener {
-      Toast.makeText(this@MainActivity, "点错了", Toast.LENGTH_SHORT).also { it.setGravity(Gravity.CENTER, 0, 0) }.show()
+      ToastUtils.showCenterToast(this@MainActivity, "点错了")
     }
     val adapter = MultiTypeAdapter()
     adapter.register(SchoolDelegate { b ->
