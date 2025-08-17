@@ -52,6 +52,7 @@ class CenteredTextView @JvmOverloads constructor(
       super.onDraw(canvas)
       return
     }
+    dRight.alpha = if (isPressedRightDrawable) 128 else 255
     val space = compoundDrawablePadding
     var dW = mDrawableWith
     var dH = mDrawableHeight
@@ -105,6 +106,7 @@ class CenteredTextView @JvmOverloads constructor(
           if (bounds.contains(event.x.toInt(), event.y.toInt())) {
             // 记录按下
             isPressedRightDrawable = true
+            invalidate()
             downTime = System.currentTimeMillis()
             downX = event.x
             downY = event.y
@@ -122,18 +124,20 @@ class CenteredTextView @JvmOverloads constructor(
           val distance = hypot(dx.toDouble(), dy.toDouble())
 
           if (mRightDrawableBounds?.contains(event.x.toInt(), event.y.toInt()) == true
-            && duration < ViewConfiguration.getTapTimeout()
-            && distance < ViewConfiguration.get(context).scaledTouchSlop
+            && duration <= 200 //ViewConfiguration.getTapTimeout()
+            && distance <= ViewConfiguration.get(context).scaledTouchSlop
           ) {
             mDrawableClickListener?.invoke()
           }
           isPressedRightDrawable = false
+          invalidate()
           return true
         }
       }
 
       MotionEvent.ACTION_CANCEL -> {
         isPressedRightDrawable = false
+        invalidate()
       }
     }
     return super.onTouchEvent(event)
