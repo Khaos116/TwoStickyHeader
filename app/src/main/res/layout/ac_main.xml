@@ -8,7 +8,8 @@
   <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:visibility="visible">
+    android:visibility="visible"
+    tools:visibility="gone">
 
     <androidx.recyclerview.widget.RecyclerView
       android:id="@+id/recyclerView"
@@ -17,10 +18,12 @@
       android:overScrollMode="never"
       app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
       app:layout_constraintBottom_toTopOf="@id/tvClickSpan"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.0"
+      app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent"
       app:layout_constraintVertical_bias="0.0"
       tools:itemCount="20"
-      tools:layout_editor_absoluteX="36dp"
       tools:listitem="@layout/item_student" />
 
     <include
@@ -52,4 +55,6 @@
       app:layout_constraintBottom_toBottomOf="parent"
       tools:text="Span文字点击效果" />
   </androidx.constraintlayout.widget.ConstraintLayout>
+
+  <!--<include layout="@layout/layout_ttf" />-->
 </androidx.constraintlayout.widget.ConstraintLayout>

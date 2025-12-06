@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:background="@color/white"
+  android:clickable="true"
+  android:focusable="true">
+
+  <androidx.appcompat.widget.AppCompatTextView
+    android:id="@+id/tvTest1"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/teal_200"
+    android:fontFamily="@font/original_font"
+    android:includeFontPadding="true"
+    android:text="原始字体pad=true\n$A;high01\n¥123.456,789"
+    android:textSize="20sp"
+    android:textStyle="bold"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintVertical_bias="0.05"
+    tools:ignore="HardcodedText" />
+
+  <androidx.appcompat.widget.AppCompatTextView
+    android:id="@+id/tvTest2"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="5dp"
+    android:background="@color/teal_200"
+    android:fontFamily="@font/original_font"
+    android:includeFontPadding="false"
+    android:text="原始字体pad=false\n$A;high01\n¥123.456,789"
+    android:textSize="20sp"
+    android:textStyle="bold"
+    app:layout_constraintBottom_toBottomOf="@id/tvTest1"
+    app:layout_constraintStart_toEndOf="@id/tvTest1"
+    app:layout_constraintTop_toTopOf="@id/tvTest1"
+    tools:ignore="HardcodedText" />
+
+  <androidx.appcompat.widget.AppCompatTextView
+    android:id="@+id/tvTest3"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="12dp"
+    android:background="@color/teal_200"
+    android:fontFamily="@font/reduced_font"
+    android:includeFontPadding="true"
+    android:text="删减字体pad=true\n$A;high01\n¥123.456,789"
+    android:textSize="20sp"
+    android:textStyle="bold"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/tvTest1"
+    app:layout_constraintVertical_bias="0.6"
+    tools:ignore="HardcodedText" />
+
+  <androidx.appcompat.widget.AppCompatTextView
+    android:id="@+id/tvTest4"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="5dp"
+    android:background="@color/teal_200"
+    android:fontFamily="@font/reduced_font"
+    android:includeFontPadding="false"
+    android:text="删减字体pad=false\n$A;high01\n¥123.456,789"
+    android:textSize="20sp"
+    android:textStyle="bold"
+    app:layout_constraintBottom_toBottomOf="@id/tvTest3"
+    app:layout_constraintStart_toEndOf="@id/tvTest3"
+    app:layout_constraintTop_toTopOf="@id/tvTest3"
+    app:layout_constraintVertical_bias="0.6"
+    tools:ignore="HardcodedText" />
+
+  <androidx.appcompat.widget.AppCompatTextView
+    android:id="@+id/tvTest5"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="12dp"
+    android:background="@color/teal_200"
+    android:fontFamily="@font/reduced_font"
+    android:includeFontPadding="true"
+    android:text="+¥120,345,678.9"
+    android:textSize="22sp"
+    android:textStyle="bold"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/tvTest3"
+    app:layout_constraintVertical_bias="0.6"
+    tools:ignore="HardcodedText" />
+
+  <androidx.appcompat.widget.AppCompatTextView
+    android:id="@+id/tvTest6"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="5dp"
+    android:background="@color/teal_200"
+    android:fontFamily="@font/reduced_font"
+    android:includeFontPadding="false"
+    android:text="+¥120,345,678.9"
+    android:textSize="22sp"
+    android:textStyle="bold"
+    app:layout_constraintBottom_toBottomOf="@id/tvTest5"
+    app:layout_constraintStart_toEndOf="@id/tvTest5"
+    app:layout_constraintTop_toTopOf="@id/tvTest5"
+    app:layout_constraintVertical_bias="0.6"
+    tools:ignore="HardcodedText" />
+</androidx.constraintlayout.widget.ConstraintLayout>
