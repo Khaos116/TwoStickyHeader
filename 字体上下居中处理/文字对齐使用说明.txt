@@ -2,5 +2,5 @@
 1.如果不是ttf字体，先使用Fontcreator打开，导出为ttf字体
 2.执行命令"python 对齐Typo和hhea.py  xxx.ttf"，纠正上下空白的值
 3.如果数字没有上下对齐，需要单独处理，如果对齐了就不用管了，主要是数字要在CapHeight和Baseline0的中间上下居中，执行命令"python 对齐数字0-9.py xxx.ttf"
-4.使用Fontcreator打开最后生成的字体文件，随便找1个几乎不使用的字体，修改其高度,让其顶部和WinAscent顶部对齐，底部和WinDescent底部对齐，我使用的是¸
+4.使用Fontcreator打开最后生成的字体文件，随便找1个几乎不使用的字体，修改其高度,让其顶部和WinAscent顶部对齐，底部和WinDescent底部对齐，我使用的是¸(也可以直接使用.notdef占位符)
 注：需要安装python运行环境，还需要安装fonttools(终端管理员运行：python -m pip install fonttools，更新命令为python -m pip install --upgrade fonttools)
