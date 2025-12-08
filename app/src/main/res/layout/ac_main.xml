@@ -55,5 +55,5 @@
       tools:text="Span文字点击效果" />
   </androidx.constraintlayout.widget.ConstraintLayout>
 
-  <!--<include layout="@layout/layout_ttf" />-->
+  <include layout="@layout/layout_ttf" />
 </androidx.constraintlayout.widget.ConstraintLayout>
