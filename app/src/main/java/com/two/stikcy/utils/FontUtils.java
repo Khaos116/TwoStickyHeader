@@ -32,7 +32,7 @@ public class FontUtils {
     //    .replace("/", "")
     //    .replace("：", "")
     //    .replace("、", "")));
-    System.err.println(s2500);
+    System.err.println(s3500);
     //checkRepeat(_sChars);
     //checkRepeat(_s2500);
     //checkRepeat(_s3500);
