@@ -10,7 +10,7 @@ import com.allen.library.shape.ShapeTextView
 import java.lang.ref.WeakReference
 
 /**
- * Author:XX
+ * Author:Khaos116
  * Date:2025/8/18
  * Time:3:14
  */
