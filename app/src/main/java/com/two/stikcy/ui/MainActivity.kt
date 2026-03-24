@@ -13,8 +13,7 @@ import com.two.stikcy.databinding.AcMainBinding
 import com.two.stikcy.decoration.DoubleStickyHeaderDecoration
 import com.two.stikcy.item.*
 import com.two.stikcy.span.MyTouchLinkSpan
-import com.two.stikcy.utils.CollapseUtils
-import com.two.stikcy.utils.ToastUtils
+import com.two.stikcy.utils.*
 
 class MainActivity : AppCompatActivity() {
   @SuppressLint("NotifyDataSetChanged")
@@ -34,6 +33,7 @@ class MainActivity : AppCompatActivity() {
       showUnderline = true,
     ) {
       override fun onSpanClick(widget: View) {
+        //MyActionDialog().show(supportFragmentManager, "action_dialog")
         ToastUtils.showCenterToast(this@MainActivity, "点击了")
       }
     }, 0, clickSpan.length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:background="#4B4B4B"
+  android:gravity="center"
+  android:orientation="vertical"
+  android:padding="24dp">
+
+  <Button
+    android:id="@+id/btnTestSnack"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="24dp"
+    android:backgroundTint="#007AFF"
+    android:text="顶部提示"
+    android:textColor="#FFFFFF" />
+
+  <Button
+    android:id="@+id/btnClose"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="24dp"
+    android:backgroundTint="#007AFF"
+    android:text="关闭弹窗"
+    android:textColor="#FFFFFF" />
+
+</LinearLayout>

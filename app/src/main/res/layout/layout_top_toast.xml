@@ -1,0 +1,20 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content"
+  android:fitsSystemWindows="true"
+  android:gravity="center"
+  android:orientation="vertical"
+  android:paddingHorizontal="12dp">
+
+  <androidx.appcompat.widget.AppCompatTextView
+    android:id="@+id/tvMessage"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#FFF000"
+    android:gravity="center"
+    android:padding="16dp"
+    android:textColor="#0000FF"
+    android:textStyle="bold"
+    tools:text="这是一条顶部提示" />
+</androidx.constraintlayout.widget.ConstraintLayout>
