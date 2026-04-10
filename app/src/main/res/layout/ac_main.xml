@@ -55,5 +55,25 @@
       tools:text="Span文字点击效果" />
   </androidx.constraintlayout.widget.ConstraintLayout>
 
-  <include layout="@layout/layout_ttf" />
+  <include
+    layout="@layout/layout_ttf"
+    android:visibility="gone" />
+
+  <com.two.stikcy.widget.RollingNumberTextView
+    android:id="@+id/tvRollTextView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/purple_200"
+    android:gravity="center_vertical"
+    android:paddingHorizontal="50dp"
+    android:paddingVertical="10dp"
+    android:text="0"
+    android:textColor="@color/black"
+    android:textSize="20sp"
+    android:textStyle="bold"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintVertical_bias="0.8"
+    tools:ignore="HardcodedText"
+    tools:text="999" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -13,12 +13,14 @@ import com.two.stikcy.databinding.AcMainBinding
 import com.two.stikcy.decoration.DoubleStickyHeaderDecoration
 import com.two.stikcy.item.*
 import com.two.stikcy.span.MyTouchLinkSpan
-import com.two.stikcy.utils.*
+import com.two.stikcy.utils.CollapseUtils
+import com.two.stikcy.utils.ToastUtils
 
 class MainActivity : AppCompatActivity() {
   @SuppressLint("NotifyDataSetChanged")
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
+    var num = Math.random() * 1000000 + 100
     val vb = AcMainBinding.inflate(layoutInflater)
     setContentView(vb.root)
     val sb = SpannableStringBuilder()
@@ -33,6 +35,8 @@ class MainActivity : AppCompatActivity() {
       showUnderline = true,
     ) {
       override fun onSpanClick(widget: View) {
+        num += Math.random() * 1000000 + 100
+        vb.tvRollTextView.setRollingNumber(num)
         //MyActionDialog().show(supportFragmentManager, "action_dialog")
         ToastUtils.showCenterToast(this@MainActivity, "点击了")
       }
