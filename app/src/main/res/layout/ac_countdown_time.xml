@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:fitsSystemWindows="true"
+  android:orientation="vertical">
+
+  <FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="44dp">
+
+    <androidx.appcompat.widget.AppCompatTextView
+      android:id="@+id/tvTitle"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:gravity="center"
+      android:text="测试列表倒计时"
+      android:textColor="@color/black"
+      android:textSize="17sp"
+      android:textStyle="bold" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+      android:id="@+id/ivBack"
+      android:layout_width="44dp"
+      android:layout_height="44dp"
+      android:paddingHorizontal="8dp"
+      android:src="?attr/homeAsUpIndicator"
+      app:tint="@color/black" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+      android:id="@+id/tvRefresh"
+      android:layout_width="wrap_content"
+      android:layout_height="match_parent"
+      android:layout_gravity="end"
+      android:gravity="center"
+      android:paddingHorizontal="8dp"
+      android:text="刷新数据"
+      android:textColor="@color/black"
+      android:textSize="17sp"
+      android:textStyle="bold" />
+  </FrameLayout>
+
+  <androidx.recyclerview.widget.RecyclerView
+    android:id="@+id/recyclerView"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="1"
+    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+    tools:itemCount="20"
+    tools:listitem="@layout/it_countdown_time" />
+</LinearLayout>

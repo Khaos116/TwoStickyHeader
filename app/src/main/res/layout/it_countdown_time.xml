@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="40dp">
+
+  <androidx.appcompat.widget.AppCompatTextView
+    android:id="@+id/tvTitle"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:gravity="center_vertical"
+    android:paddingHorizontal="5dp"
+    android:text="名称"
+    android:textColor="@color/black"
+    android:textSize="14sp"
+    android:textStyle="bold" />
+
+  <androidx.appcompat.widget.AppCompatTextView
+    android:id="@+id/tvTime"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:layout_marginStart="200dp"
+    android:gravity="center"
+    android:text="10:25:58"
+    android:textColor="@android:color/holo_blue_dark"
+    android:textSize="14sp" />
+
+  <View
+    android:layout_width="match_parent"
+    android:layout_height="1dp"
+    android:layout_gravity="bottom"
+    android:background="@android:color/background_dark" />
+</FrameLayout>

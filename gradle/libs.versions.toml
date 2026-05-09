@@ -9,6 +9,7 @@ supertextview = "2.4.6"
 #项目基本配置
 base-core = { group = "androidx.core", name = "core-ktx", version = "1.12.0" }
 base-runtime = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version = "2.7.0" }
+base-lifecycle = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version = "2.7.0" }
 base-appcompat = { group = "androidx.appcompat", name = "appcompat", version = "1.6.1" }
 base-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version = "2.1.4" }
 base-recyclerview = { group = "androidx.recyclerview", name = "recyclerview", version = "1.3.2" }

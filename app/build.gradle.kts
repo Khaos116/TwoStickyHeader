@@ -106,6 +106,7 @@ android.applicationVariants.all { //这里会走"渠道数"x2(Debug+Release)的�
 dependencies {
   implementation(libs.base.core)
   implementation(libs.base.runtime)
+  implementation(libs.base.lifecycle)
   implementation(libs.base.appcompat)
   implementation(libs.base.constraintlayout)
   implementation(libs.base.recyclerview)

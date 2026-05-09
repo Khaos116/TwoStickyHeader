@@ -39,6 +39,7 @@ class MainActivity : AppCompatActivity() {
         vb.tvRollTextView.setRollingNumber(num)
         //MyActionDialog().show(supportFragmentManager, "action_dialog")
         ToastUtils.showCenterToast(this@MainActivity, "点击了")
+        CountdownTimeActivity.startActivity(this@MainActivity)
       }
     }, 0, clickSpan.length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
     sb.append(clickSpan)
